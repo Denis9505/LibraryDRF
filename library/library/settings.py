@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'django_filters',
+    'social_django',
 
     'store.apps.StoreConfig',
 ]
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'library.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,6 +92,11 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -132,3 +138,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
+
+SOCIAL_AUTH_GITHUB_KEY = '55169ae750d6e69aaa1a'
+
+SOCIAL_AUTH_GITHUB_SECRET = '21345c94aa17abdb3a0461a7af63366ca5fa9483'
